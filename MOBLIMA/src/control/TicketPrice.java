@@ -1,4 +1,4 @@
-package data;
+package control;
 
 public class TicketPrice {
 	private String ticketPrice, cinemaType, movieType;

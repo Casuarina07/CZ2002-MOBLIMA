@@ -1,4 +1,4 @@
-package data;
+package entity;
 
 public class Cineplex {
 	private String cinemaID, cinemaName, cinemaLocation;
