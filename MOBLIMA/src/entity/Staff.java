@@ -22,25 +22,4 @@ public class Staff {
 	public String getStaffPwd() {
 		return staffPwd;
 	}
-
-	public boolean createMovie() {
-		return true;
-	}
-
-	public boolean updateMovie() {
-		return true;
-	}
-
-	public boolean removeMovie() {
-		return true;
-	}
-
-	public void listTop5Movie() {
-
-	}
-
-	public void configureSystem() {
-
-	}
-
 }
