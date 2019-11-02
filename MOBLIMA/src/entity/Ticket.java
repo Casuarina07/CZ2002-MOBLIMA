@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Calendar;
 
 public class Ticket {
-	private String movieName, movieType, cinemaType;
+	private String movieName, movieType, cinemaType, seatID;
 	private double standardPrice, finalPrice;
 	private boolean isPublicHoliday, isWeekday;
 
