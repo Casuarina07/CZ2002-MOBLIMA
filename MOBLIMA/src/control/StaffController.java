@@ -34,7 +34,12 @@ public class StaffController {
 	public void removeMovieShowing() {
 		
 	}
-	public void logout() {
+	
+	public void staffLogin() {
+		
+	}
+	
+	public void staffLogout() {
 		
 	}
 	public void listTop5MovieSales() {
