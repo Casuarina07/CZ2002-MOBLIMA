@@ -59,7 +59,7 @@ public class StaffUI {
 					staffCon.configureSettings();
 					break;
 				case 0:
-					staffCon.logout();
+					staffCon.staffLogout();
 					break;
 				default:
 					System.out.println("Invalid choice, please try again");
