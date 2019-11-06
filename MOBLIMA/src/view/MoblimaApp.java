@@ -43,6 +43,8 @@ public class MoblimaApp {
 				
 			case 2:
 				// Display Guest Menu
+				MovieGoerUI movieGoerUI = MovieGoerUI.getInstance();
+				movieGoerUI.displayMenu();
 			case 0:
 				System.out.print("System terminating..");
 				break;
