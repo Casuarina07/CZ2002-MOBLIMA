@@ -7,16 +7,15 @@ import control.StaffController;
 public class MoblimaApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		Scanner sc = new Scanner(System.in);
-		
+
 		int choice;
-		
-		System.out.println("________WELCOME TO MOBLIMA_________"
-						+ "| 1. Login as Staff                 |"
-						+ "| 2. Continue as Guest              |"
-						+ "| 0. Exit Program                   |"
+
+		System.out.println("________WELCOME TO MOBLIMA_________\n"
+						+ "| 1. Login as Staff                 |\n"
+						+ "| 2. Continue as Guest              |\n"
+						+ "| 0. Exit Program                   |\n"
 						+ "____________________________________");
 	
 		choice = sc.nextInt();
