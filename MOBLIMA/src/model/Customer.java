@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 public class Customer {
 	private String custName, custEmail, custHp;

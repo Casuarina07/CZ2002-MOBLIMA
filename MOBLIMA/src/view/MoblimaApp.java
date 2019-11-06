@@ -1,14 +1,9 @@
-package boundary;
+package view;
 
 import java.util.Scanner;
 
 import control.StaffController;
 
-/**
- * 
- * @author GBXM
- *
- */
 public class MoblimaApp {
 
 	public static void main(String[] args) {

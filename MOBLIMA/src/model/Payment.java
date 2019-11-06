@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 public class Payment {
 	private Customer customer;

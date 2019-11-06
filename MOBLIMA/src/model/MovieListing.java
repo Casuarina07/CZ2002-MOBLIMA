@@ -1,15 +1,15 @@
-package entity;
+package model;
 
 import java.util.List;
 
-/*
+/**
  * This class represents the information of a movie
- * */
+ */
 public class MovieListing {
 
 	public enum MovieStatus {COMINGSOON, PREVIEW, NOWSHOWING, ENDOFSHOWING}
 	
-	public enum MovieGenre {THREED, BLOCKBUSTER, NORMAL}
+	public enum MovieGenre {THRILLER, ROMANCE, COMEDY, CARTOON}
 	
 	public enum MovieRating {G, PG, PG13, NC16, M18, R21} 
 	
@@ -23,6 +23,23 @@ public class MovieListing {
 	private double overallRating; // this refers to the overall viewer ratings for example, stars used
 	private MovieRating movieRating; //refer to enum above
 	private String movieSynopsis;
+	
+	
+	public MovieListing(String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
+			String[] movieCast, MovieGenre movieGenre, List<Rating> movieReview, double overallRating,
+			MovieRating movieRating, String movieSynopsis) {
+		super();
+		this.movieTitle = movieTitle;
+		this.movieStatus = movieStatus;
+		this.movieDirector = movieDirector;
+		this.movieDuration = movieDuration;
+		this.movieCast = movieCast;
+		this.movieGenre = movieGenre;
+		this.movieReview = movieReview;
+		this.overallRating = overallRating;
+		this.movieRating = movieRating;
+		this.movieSynopsis = movieSynopsis;
+	}
 	
 	public String getMovieTitle() {
 		return movieTitle;

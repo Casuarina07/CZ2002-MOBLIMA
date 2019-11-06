@@ -1,12 +1,14 @@
-package boundary;
+package view;
 import java.util.Scanner;
 
 import control.StaffController;
+import model.MovieListing;
 
 public class StaffUI {
 
 	private static StaffUI staffUI = null;
 	private Scanner sc; 
+	private MovieListing movie;
 	
 	private StaffUI() {
 		sc = new Scanner(System.in);
@@ -33,12 +35,14 @@ public class StaffUI {
 								+ "| 5. Update Movie Showing            |\n"
 								+ "| 6. Remove Movie Showing            |\n"
 								+ "| 7. Configure Settings	            |\n"
+								+ "| 8. Generate Sales Report           |\n"
 								+ "| 0. Logout                          |\n");
 			choice = sc.nextInt();
 			
 			switch(choice) {
 				case 1:
-					staffCon.createMovieListing();
+
+					staffCon.createMovieListing(movie);
 					break;
 				case 2:
 					staffCon.updateMovieListing();
@@ -57,6 +61,9 @@ public class StaffUI {
 					break;
 				case 7:
 					staffCon.configureSettings();
+					break;
+				case 8:
+					staffCon.generateSalesReport();
 					break;
 				case 0:
 					staffCon.staffLogout();
