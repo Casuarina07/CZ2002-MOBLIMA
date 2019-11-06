@@ -28,7 +28,7 @@ public class MovieGoerUI {
 			System.out.println("_____________WELCOME!!_________________\n"
 					+ "| 1. Search Movie                 |\n" 
 					+ "| 2. List All Movie               |\n"
-					+ "| 3. Book ticket                  |\n"
+					+ "| 3. Book Ticket                  |\n"
 					+ "| 4. List Top 5 Movies            |\n"
 					+ "| 5. View Booking History         |\n"
 					+ "| 0. Exit Program                 |\n"
