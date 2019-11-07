@@ -13,12 +13,12 @@ public class MoblimaApp {
 		
 		int choice;
 		
-		System.out.println("________WELCOME TO MOBLIMA_________"
-						+ "| 1. Login as Staff                 |"
-						+ "| 2. Continue as Guest              |"
-						+ "| 0. Exit Program                   |"
-						+ "____________________________________");
-	
+		System.out.println("________WELCOME TO MOBLIMA_________\n"
+						+ "| 1. Login as Staff                 |\n"
+						+ "| 2. Continue as Guest              |\n"
+						+ "| 0. Exit Program                   |\n"
+						+ "____________________________________\n");
+		
 		choice = sc.nextInt();
 		
 		switch (choice) {
