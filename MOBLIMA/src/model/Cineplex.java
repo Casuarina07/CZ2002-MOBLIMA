@@ -1,25 +1,20 @@
 package model;
 
 public class Cineplex {
-	private String cinemaID, cinemaName, cinemaLocation;
+	private String cineplexID, cineplexName;
 
-	public Cineplex(String cinemaID, String cinemaName, String cinemaLocation) {
+	public Cineplex(String cineplexID, String cineplexName) {
 		super();
-		this.cinemaID = cinemaID;
-		this.cinemaName = cinemaName;
-		this.cinemaLocation = cinemaLocation;
+		this.cineplexID = cineplexID;
+		this.cineplexName = cineplexName;
 	}
 
-	public String getCinemaID() {
-		return cinemaID;
+	public String getCineplexID() {
+		return cineplexID;
 	}
 
-	public String getCinemaName() {
-		return cinemaName;
-	}
-
-	public String getCinemaLocation() {
-		return cinemaLocation;
+	public String getCineplexName() {
+		return cineplexName;
 	}
 
 }
