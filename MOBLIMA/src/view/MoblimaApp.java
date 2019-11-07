@@ -11,22 +11,12 @@ public class MoblimaApp {
 		Scanner sc = new Scanner(System.in);
 
 		int choice;
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> 9dcab4c1716643b6bd2c767342f81bcf50d44d42
 		System.out.println("________WELCOME TO MOBLIMA_________\n"
 						+ "| 1. Login as Staff                 |\n"
 						+ "| 2. Continue as Guest              |\n"
 						+ "| 0. Exit Program                   |\n"
-<<<<<<< HEAD
 						+ "____________________________________\n");
-		
-=======
-						+ "____________________________________");
-
->>>>>>> 9dcab4c1716643b6bd2c767342f81bcf50d44d42
 		choice = sc.nextInt();
 
 		switch (choice) {
