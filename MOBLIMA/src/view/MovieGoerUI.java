@@ -45,10 +45,10 @@ public class MovieGoerUI {
 					
 					break;
 				case 4:
-					
+					listTop5Movies(); 
 					break;
 				case 5:
-					
+					viewBookingHistory();
 					break;
 				case 0:
 					
@@ -59,6 +59,15 @@ public class MovieGoerUI {
 			}
 			
 		} while(choice > 0);
+	}
+	//listTop5Movies
+	private void listTop5Movies() {
+		System.out.println("Top 5 Movies Sold: \n"); 
+		System.out.println("Top 5 Movies Rated: \n"); 
+	}
+
+	private void viewBookingHistory() {
+		System.out.println("Booking History \n"); 
 	}
 
 }
