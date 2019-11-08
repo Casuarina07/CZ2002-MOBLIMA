@@ -1,9 +1,11 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represents the information of a movie
+ * @author Gwyn Bong Xiao Min
+ * @since 2019-11-01
  */
 public class MovieListing {
 
@@ -17,30 +19,44 @@ public class MovieListing {
 	private MovieStatus movieStatus; //refer to enum above
 	private String movieDirector;
 	private int movieDuration;
-	private String[] movieCast; // there may be more than one cast, thus an array is needed
+	private ArrayList<String> movieCastList; // there may be more than one cast, thus an array is needed
 	private MovieGenre movieGenre; //refer to enum above
 	private List<Rating> movieReview; // this is a list of all customer reviews for a particular movie
 	private double overallRating; // this refers to the overall viewer ratings for example, stars used
 	private MovieRating movieRating; //refer to enum above
 	private String movieSynopsis;
 	
-	
 	public MovieListing(String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
-			String[] movieCast, MovieGenre movieGenre, List<Rating> movieReview, double overallRating,
+			ArrayList<String> movieCastList, MovieGenre movieGenre, MovieRating movieRating, String movieSynopsis) {
+		super();
+		this.movieTitle = movieTitle;
+		this.movieStatus = movieStatus;
+		this.movieDirector = movieDirector;
+		this.movieDuration = movieDuration;
+		this.movieCastList = movieCastList;
+		this.movieGenre = movieGenre;
+		this.movieRating = movieRating;
+		this.movieSynopsis = movieSynopsis;
+	}
+	
+	
+
+	public MovieListing(String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
+			ArrayList<String> movieCastList, MovieGenre movieGenre, List<Rating> movieReview, double overallRating,
 			MovieRating movieRating, String movieSynopsis) {
 		super();
 		this.movieTitle = movieTitle;
 		this.movieStatus = movieStatus;
 		this.movieDirector = movieDirector;
 		this.movieDuration = movieDuration;
-		this.movieCast = movieCast;
+		this.movieCastList = movieCastList;
 		this.movieGenre = movieGenre;
 		this.movieReview = movieReview;
 		this.overallRating = overallRating;
 		this.movieRating = movieRating;
 		this.movieSynopsis = movieSynopsis;
 	}
-	
+
 	public String getMovieTitle() {
 		return movieTitle;
 	}
@@ -65,12 +81,15 @@ public class MovieListing {
 	public void setMovieDuration(int movieDuration) {
 		this.movieDuration = movieDuration;
 	}
-	public String[] getMovieCast() {
-		return movieCast;
+
+	public ArrayList<String> getMovieCastList() {
+		return movieCastList;
 	}
-	public void setMovieCast(String[] movieCast) {
-		this.movieCast = movieCast;
+
+	public void setMovieCastList(ArrayList<String> movieCastList) {
+		this.movieCastList = movieCastList;
 	}
+
 	public MovieGenre getMovieGenre() {
 		return movieGenre;
 	}
