@@ -1,23 +1,54 @@
 package model;
 
-public class CinemaHall extends Cinema {
-	int row, col;
-	int[][] seats;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Date;
 
-	public CinemaHall(String cineplexID, String cineplexName, String cinemaID, String cinemaName, String cinemaLocation,
-			int row, int col) {
-		super(cineplexID, cineplexName, cinemaID, cinemaName, cinemaLocation);
-		this.row = row;
-		this.col = col;
-		this.seats = new int[row][col];
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+
+public class CinemaHall {
+	public static int ROW = 10;
+	public static int COL = 16;
+
+	private static ArrayList<Seat> seats = new ArrayList<Seat>();
+	private static int[][] seatsLayout = new int[ROW][COL];
+	private Date showDate, showTime;
+
+	public CinemaHall(Date showDate, Date showTime) {
+		super();
+		initSeats();
+		this.seats = new ArrayList<Seat>();
+		this.seatsLayout = new int[ROW][COL];
+		this.showDate = showDate;
+		this.showTime = showTime;
 	}
 
-	public void displaySeats() {
-		System.out.println("---------------------- SCREEN ----------------------");
-		for (int i = 0; i < row; i++) {
-			System.out.print((char) (i + 65)+" ");
-			for (int j = 0; j < col; j++) {
-				if (seats[i][j] == 0) {
+	public ArrayList<Seat> getSeats() {
+		return seats;
+	}
+
+	public void setSeats(ArrayList<Seat> seats) {
+		this.seats = seats;
+	}
+
+	public static void displaySeats() {
+		// Populate the seatsLayout Array with occupied seats.
+		int row, col;
+		for (int i = 0; i < seats.size(); i++) {
+			if (seats.get(i).isOccupied()) {
+				col = (seats.get(i).getSeatId()) % ROW;
+				row = (seats.get(i).getSeatId()) / ROW;
+				seatsLayout[row][col] = 1;
+			}
+		}
+
+		// Print the seatsLayout
+		System.out.println("--------------------- SCREEN ---------------------");
+		for (int i = 0; i < ROW; i++) {
+			System.out.print((char) (i + 65) + " ");
+			for (int j = 0; j < COL; j++) {
+				if (seatsLayout[i][j] == 0) {
 					System.out.print("[ ]");
 				} else {
 					System.out.print("[x]");
@@ -29,15 +60,37 @@ public class CinemaHall extends Cinema {
 		System.out.println();
 	}
 
-	public boolean isSeatAvailable(int row, int col) {
-		if (seats[row][col] == 0)
-			return true;
-		else
-			return false;
+	public static void initSeats() {
+		seats = new ArrayList<Seat>();
+		for (int i = 0; i < (ROW * COL); i++) {
+			seats.add(new Seat(i, false));
+		}
 	}
 
-	public void setSeatBooked(int row, int col) {
-		seats[row][col] = 1;
+	public static void readOccupiedSeatsData(int cineplexID, int cinemaID, int movieID, int showTimeID) {
+		try {
+			FileReader fileReader = new FileReader("./src/storage/CinemaHall.csv");
+			CSVReader csvReader = new CSVReaderBuilder(fileReader).withSkipLines(1).build();
+			String[] nextRecord;
+			// Read from CinemaHall.csv line by line and search for the line with the
+			// matching cineplexID, cinemaID, movieID and showTimeID
+			while ((nextRecord = csvReader.readNext()) != null) {
+				if (Integer.parseInt(nextRecord[1]) == cinemaID && Integer.parseInt(nextRecord[2]) == cinemaID
+						&& Integer.parseInt(nextRecord[3]) == movieID
+						&& Integer.parseInt(nextRecord[4]) == showTimeID) {
+
+					// List to store seatID that are occupied
+					String[] occupiedSeatIds = nextRecord[5].split(",");
+
+					for (String id : occupiedSeatIds) {
+						seats.get(Integer.parseInt(id)).setOccupied(true);
+					}
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

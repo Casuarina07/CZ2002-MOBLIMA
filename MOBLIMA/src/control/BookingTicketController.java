@@ -2,11 +2,11 @@ package control;
 
 import java.sql.Date;
 
-public class BookingTicket {
+public class BookingTicketController {
 	private String seatsVacancy, movieTitle, cinemaName;
 	private Date showTime, showDate;
 
-	public BookingTicket(String seatsVacancy, String movieTitle, String cinemaName, Date showTime, Date showDate) {
+	public BookingTicketController(String seatsVacancy, String movieTitle, String cinemaName, Date showTime, Date showDate) {
 		super();
 		this.seatsVacancy = seatsVacancy;
 		this.movieTitle = movieTitle;

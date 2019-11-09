@@ -3,11 +3,14 @@ package view;
 import java.util.Scanner;
 
 import control.StaffController;
+import model.CinemaHall;
 
 public class MoblimaApp {
 
 	public static void main(String[] args) {
-
+		CinemaHall.initSeats();
+		CinemaHall.readOccupiedSeatsData(1, 1, 1, 1);
+		CinemaHall.displaySeats();
 		Scanner sc = new Scanner(System.in);
 
 		int choice;
