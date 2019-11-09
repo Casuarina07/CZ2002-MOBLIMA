@@ -14,6 +14,7 @@ public class MovieListing {
 	public enum MovieGenre {THRILLER, ROMANCE, COMEDY, CARTOON}
 	public enum MovieRating {G, PG, PG13, NC16, M18, R21} 
 	
+	private int movieID;
 	private String movieTitle;
 	private MovieStatus movieStatus; //refer to enum above
 	private String movieDirector;
@@ -26,9 +27,10 @@ public class MovieListing {
 	private List<Rating> movieReview; // this is a list of all customer reviews for a particular movie
 	private double overallRating; // this refers to the overall viewer ratings for example, stars used (1 - 5[best])
 	
-	public MovieListing(String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
+	public MovieListing(int movieID, String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
 			ArrayList<String> movieCastList, MovieGenre movieGenre, MovieRating movieRating, String movieSynopsis) {
 		super();
+		this.movieID = movieID;
 		this.movieTitle = movieTitle;
 		this.movieStatus = movieStatus;
 		this.movieDirector = movieDirector;
@@ -39,10 +41,11 @@ public class MovieListing {
 		this.movieSynopsis = movieSynopsis;
 	}
 
-	public MovieListing(String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
+	public MovieListing(int movieID, String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
 			ArrayList<String> movieCastList, MovieGenre movieGenre, List<Rating> movieReview, double overallRating,
 			MovieRating movieRating, String movieSynopsis) {
 		super();
+		this.movieID = movieID;
 		this.movieTitle = movieTitle;
 		this.movieStatus = movieStatus;
 		this.movieDirector = movieDirector;
@@ -53,6 +56,14 @@ public class MovieListing {
 		this.overallRating = overallRating;
 		this.movieRating = movieRating;
 		this.movieSynopsis = movieSynopsis;
+	}
+
+	public int getMovieID() {
+		return movieID;
+	}
+
+	public void setMovieID(int movieID) {
+		this.movieID = movieID;
 	}
 
 	public String getMovieTitle() {
@@ -127,7 +138,6 @@ public class MovieListing {
 	public void setMovieSynopsis(String movieSynopsis) {
 		this.movieSynopsis = movieSynopsis;
 	}
-
 	
 	/**
 	 * 

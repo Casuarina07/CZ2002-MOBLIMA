@@ -1,31 +1,36 @@
 package model;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
-/*
- * This class represents a movie show times at specific cinema hall
- *  
- * */
+/**
+ * @author Gwyn Bong Xiao Min
+ * @since 2019-11-01
+ */
 public class MovieShowing {
 	private MovieListing movieName;
-	private String cinemaHall;
+	private CinemaHall cinemaHall;
 	private Cineplex cineplex; 
-	private SimpleDateFormat showTime;
+	private ArrayList<ShowTime> showTimes;
+	
+	/**
+	 * Empty Constructor
+	 */
+	public MovieShowing() {
+		super();
+	}
 		
-	public MovieShowing(MovieListing movieName, String cinemaHall, Cineplex cineplex, SimpleDateFormat showTime) {
+	/**
+	 * Constructor
+	 * @param movieName
+	 * @param cinemaHall
+	 * @param cineplex
+	 * @param showTimes
+	 */
+	public MovieShowing(MovieListing movieName, CinemaHall cinemaHall, Cineplex cineplex, ArrayList<ShowTime> showTimes) {
 		super();
 		this.movieName = movieName;
 		this.cinemaHall = cinemaHall;
 		this.cineplex = cineplex;
-		this.showTime = showTime;
-	}
-	
-	/**
-	 * string of information about a movie showing in a cinema
-	 * 
-	 * */
-	public String toString() {
-		return null;
-
+		this.showTimes = new ArrayList<>();
 	}
 	
 	public MovieListing getMovieName() {
@@ -34,10 +39,10 @@ public class MovieShowing {
 	public void setMovieName(MovieListing movieName) {
 		this.movieName = movieName;
 	}
-	public String getCinemaHall() {
+	public CinemaHall getCinemaHall() {
 		return cinemaHall;
 	}
-	public void setCinemaHall(String cinemaHall) {
+	public void setCinemaHall(CinemaHall cinemaHall) {
 		this.cinemaHall = cinemaHall;
 	}
 	public Cineplex getCineplex() {
@@ -46,11 +51,20 @@ public class MovieShowing {
 	public void setCineplex(Cineplex cineplex) {
 		this.cineplex = cineplex;
 	}
-	public SimpleDateFormat getShowTime() {
-		return showTime;
+
+	public ArrayList<ShowTime> getShowTimes() {
+		return showTimes;
 	}
-	public void setShowTime(SimpleDateFormat showTime) {
-		this.showTime = showTime;
+	
+	
+	/**
+	 * Add a list of show time for a movie
+	 * @param showTime : shows the movie times
+	 */
+	public void addShowTime(ShowTime showTime) {
+		for(ShowTime st : showTimes) {
+
+		}
 	}
 }
 
