@@ -11,7 +11,7 @@ public class MovieListing {
 	private static ArrayList<MovieListing> movieList = new ArrayList<>();
 
 	public enum MovieStatus {COMINGSOON, PREVIEW, NOWSHOWING, ENDSHOWING}
-	public enum MovieGenre {THRILLER, ROMANCE, COMEDY, CARTOON}
+	public enum MovieGenre {THRILLER, ROMANCE, COMEDY, CARTOON, ACTION}
 	public enum MovieRating {G, PG, PG13, NC16, M18, R21} 
 	
 	private int movieID;
