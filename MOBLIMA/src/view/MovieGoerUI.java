@@ -1,7 +1,6 @@
 package view;
 import java.util.Scanner;
 
-import control.StaffController;
 import model.MovieListing;
 
 public class MovieGoerUI {
