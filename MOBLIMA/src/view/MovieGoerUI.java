@@ -5,6 +5,12 @@ import java.util.Scanner;
 import control.SeachAndListMovieCSV;
 import model.MovieListing;
 
+/**
+ * @author Casuarina D/O Abdul Karim
+ * @author Loh Hui Qi
+ * @author David Loh Shun Hao
+ * @since 2019-11-06
+ */
 public class MovieGoerUI {
 
 	private static MovieGoerUI movieGoerUI = null;
