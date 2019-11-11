@@ -8,27 +8,29 @@ import java.util.List;
  * @since 2019-11-01
  */
 public class MovieListing {
+	private static ArrayList<MovieListing> movieList = new ArrayList<>();
 
-	public enum MovieStatus {COMINGSOON, PREVIEW, NOWSHOWING, ENDOFSHOWING}
-	
+	public enum MovieStatus {COMINGSOON, PREVIEW, NOWSHOWING, ENDSHOWING}
 	public enum MovieGenre {THRILLER, ROMANCE, COMEDY, CARTOON}
-	
 	public enum MovieRating {G, PG, PG13, NC16, M18, R21} 
 	
+	private int movieID;
 	private String movieTitle;
 	private MovieStatus movieStatus; //refer to enum above
 	private String movieDirector;
 	private int movieDuration;
 	private ArrayList<String> movieCastList; // there may be more than one cast, thus an array is needed
 	private MovieGenre movieGenre; //refer to enum above
-	private List<Rating> movieReview; // this is a list of all customer reviews for a particular movie
-	private double overallRating; // this refers to the overall viewer ratings for example, stars used
 	private MovieRating movieRating; //refer to enum above
 	private String movieSynopsis;
 	
-	public MovieListing(String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
+	private List<Rating> movieReview; // this is a list of all customer reviews for a particular movie
+	private double overallRating; // this refers to the overall viewer ratings for example, stars used (1 - 5[best])
+	
+	public MovieListing(int movieID, String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
 			ArrayList<String> movieCastList, MovieGenre movieGenre, MovieRating movieRating, String movieSynopsis) {
 		super();
+		this.movieID = movieID;
 		this.movieTitle = movieTitle;
 		this.movieStatus = movieStatus;
 		this.movieDirector = movieDirector;
@@ -38,13 +40,12 @@ public class MovieListing {
 		this.movieRating = movieRating;
 		this.movieSynopsis = movieSynopsis;
 	}
-	
-	
 
-	public MovieListing(String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
+	public MovieListing(int movieID, String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
 			ArrayList<String> movieCastList, MovieGenre movieGenre, List<Rating> movieReview, double overallRating,
 			MovieRating movieRating, String movieSynopsis) {
 		super();
+		this.movieID = movieID;
 		this.movieTitle = movieTitle;
 		this.movieStatus = movieStatus;
 		this.movieDirector = movieDirector;
@@ -55,6 +56,14 @@ public class MovieListing {
 		this.overallRating = overallRating;
 		this.movieRating = movieRating;
 		this.movieSynopsis = movieSynopsis;
+	}
+
+	public int getMovieID() {
+		return movieID;
+	}
+
+	public void setMovieID(int movieID) {
+		this.movieID = movieID;
 	}
 
 	public String getMovieTitle() {
@@ -82,6 +91,14 @@ public class MovieListing {
 		this.movieDuration = movieDuration;
 	}
 
+	/**
+	 * Add cast to Movie Cast List
+	 * @param cast : holds a string value
+	 */
+	public void addMovieCast(String cast) {
+		movieCastList.add(cast);
+	}
+	
 	public ArrayList<String> getMovieCastList() {
 		return movieCastList;
 	}
@@ -120,6 +137,14 @@ public class MovieListing {
 	}
 	public void setMovieSynopsis(String movieSynopsis) {
 		this.movieSynopsis = movieSynopsis;
+	}
+	
+	/**
+	 * 
+	 * @return A list of Movies
+	 */
+	public static ArrayList<MovieListing> getMovieList() {
+		return movieList;
 	}	
 	
 	
