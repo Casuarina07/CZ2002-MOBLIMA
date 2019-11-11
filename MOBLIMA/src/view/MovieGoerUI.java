@@ -1,6 +1,8 @@
 package view;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import control.SeachAndListMovieCSV;
 import model.MovieListing;
 
 public class MovieGoerUI {
@@ -36,9 +38,25 @@ public class MovieGoerUI {
 			
 			switch(choice) {
 				case 1:
+					System.out.println("Please enter movie title: ");
+					Scanner scTitle = new Scanner(System.in);
+					String titleInput = scTitle.nextLine();
+					
+					ArrayList<MovieListing> movieSearching = new ArrayList<MovieListing>();	
+					movieSearching = SeachAndListMovieCSV.searchMovieCSV(titleInput);
+					
+					for (int i = 0; i < movieSearching.size(); i++) 
+					{
+						System.out.println(i + ". " + movieSearching.get(i).getMovieTitle());
+					}
 					break;
 				case 2:
-					
+					ArrayList<MovieListing> movieListings = new ArrayList<MovieListing>();
+					movieListings = SeachAndListMovieCSV.readMovieCSV();
+					for (int i = 0; i < movieListings.size(); i++) 
+					{
+						System.out.println(i + ". " + movieListings.get(i).getMovieTitle());
+					}
 					break;
 				case 3:
 					
