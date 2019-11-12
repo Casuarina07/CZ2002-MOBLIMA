@@ -23,8 +23,6 @@ public class CinemaHall extends Cinema {
 		this.seats = new int[row][col];
 	}
 
-
-
 	public void displaySeats() {
 		System.out.println("---------------------- SCREEN ----------------------");
 		for (int i = 0; i < row; i++) {
@@ -53,4 +51,38 @@ public class CinemaHall extends Cinema {
 		seats[row][col] = 1;
 	}
 
+	public void displaySeats() {
+		// Populate the seatsLayout Array with occupied seats.
+		int row, col;
+		for (int i = 0; i < seats.size(); i++) {
+			if (seats.get(i).isOccupied()) {
+				col = (seats.get(i).getSeatId()) % row;
+				row = (seats.get(i).getSeatId()) / row;
+				seatsLayout[row][col] = 1;
+			}
+		}
+
+		// Print the seatsLayout
+		System.out.println("--------------------- SCREEN ---------------------");
+		for (int i = 0; i < row; i++) {
+			System.out.print((char) (i + 65) + " ");
+			for (int j = 0; j < COL; j++) {
+				if (seatsLayout[i][j] == 0) {
+					System.out.print("[ ]");
+				} else {
+					System.out.print("[x]");
+				}
+
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
+
+	public static void initSeats() {
+		seats = new ArrayList<Seat>();
+		for (int i = 0; i < (row * col); i++) {
+			seats.add(new Seat(i, false));
+		}
+	}
 }
