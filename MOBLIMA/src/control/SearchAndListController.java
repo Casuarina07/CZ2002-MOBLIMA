@@ -15,7 +15,7 @@ import model.MovieListing;
  */
 
 
-public class SearchAndListMovieCSV {
+public class SearchAndListController {
 
 	//readMovieListingCSV
 	public static ArrayList<MovieListing> readMovieCSV() 
