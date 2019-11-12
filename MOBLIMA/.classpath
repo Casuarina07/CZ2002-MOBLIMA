@@ -7,9 +7,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="src/opencsv-5.0.jar"/>
-	<classpathentry kind="lib" path="/Users/work/Downloads/commons-lang3-3.9/commons-lang3-3.9-sources.jar"/>
-	<classpathentry kind="lib" path="/Users/work/Downloads/commons-lang3-3.9/commons-lang3-3.9-test-sources.jar"/>
-	<classpathentry kind="lib" path="/Users/work/Downloads/commons-lang3-3.9/commons-lang3-3.9-tests.jar"/>
-	<classpathentry kind="lib" path="/Users/work/Downloads/commons-lang3-3.9/commons-lang3-3.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

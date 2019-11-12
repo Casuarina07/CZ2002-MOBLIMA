@@ -1,13 +1,24 @@
 package model;
 
-public class Cinema extends Cineplex {
-	String cinemaID, cinemaName, cinemaLocation;
+import java.util.ArrayList;
 
-	public Cinema(String cineplexID, String cineplexName, String cinemaID, String cinemaName, String cinemaLocation) {
-		super(cineplexID, cineplexName);
+/**
+ * @author David Loh Shun Hao
+ * @author Gwyn Bong Xiao Min
+ * @since 2019-10-24
+ */
+public class Cinema extends Cineplex {
+	String cinemaID, cinemaCode, cinemaName;
+	private ArrayList<MovieListing> movieList;
+
+
+	public Cinema(String cineplexID, String cineplexName, ArrayList<Cinema> cinemaList, String cinemaID,
+			String cinemaCode, String cinemaName, ArrayList<MovieListing> movieList) {
+		super(cineplexID, cineplexName, cinemaList);
 		this.cinemaID = cinemaID;
+		this.cinemaCode = cinemaCode;
 		this.cinemaName = cinemaName;
-		this.cinemaLocation = cinemaLocation;
+		this.movieList = movieList;
 	}
 
 	public String getCinemaID() {
@@ -18,8 +29,11 @@ public class Cinema extends Cineplex {
 		return cinemaName;
 	}
 
-	public String getCinemaLocation() {
-		return cinemaLocation;
+	public void setCinemaID(String cinemaID) {
+		this.cinemaID = cinemaID;
 	}
 
+	public void setCinemaName(String cinemaName) {
+		this.cinemaName = cinemaName;
+	}
 }
