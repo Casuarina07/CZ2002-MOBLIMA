@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import model.MovieListing;
 
@@ -16,7 +15,7 @@ import model.MovieListing;
  */
 
 
-public class SeachAndListMovieCSV {
+public class SearchAndListMovieCSV {
 
 	//readMovieListingCSV
 	public static ArrayList<MovieListing> readMovieCSV() 
@@ -100,6 +99,7 @@ public class SeachAndListMovieCSV {
 		BufferedReader br = null;
 		String line = ""; 
 		String cvsSplitBy = ",";
+		int c=0; //counter to check if movie exist
 
 		ArrayList<MovieListing> movies = new ArrayList<MovieListing>();
 
@@ -134,11 +134,14 @@ public class SeachAndListMovieCSV {
 
 							MovieListing movie = new MovieListing(movieID, movieTitle, movieStatus, movieDirector,
 									movieDuration, casts, movieGenre, movieRating, movieSynopsis);
-							movies.add(movie);							
+							movies.add(movie);	
+							c=1; // if movie found
 						} 
 					}
-		
-					//System.out.println("No existing movie");				
+					if (c==0) //if no movie found
+					{
+						System.out.println("No existing movie");				
+					}
 			}
 			catch(FileNotFoundException e)
 			{
