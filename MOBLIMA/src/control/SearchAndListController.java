@@ -30,7 +30,7 @@ public class SearchAndListController {
 
 		try {
 				br = new BufferedReader(new FileReader(filePath));
-				System.out.println("--------All Movies-----------");
+				
 				
 				while ((line = br.readLine()) != null) 
 				{
@@ -44,7 +44,7 @@ public class SearchAndListController {
 					int movieDuration = Integer.parseInt(value[4]);
 					// casts arrayList
 					ArrayList<String> casts = new ArrayList<String>();
-					String[] castsList = value[4].split(";");
+					String[] castsList = value[5].split(";");
 					for (String cast : castsList) 
 					{
 						casts.add(cast);
@@ -121,7 +121,7 @@ public class SearchAndListController {
 							int movieDuration = Integer.parseInt(value[4]);
 							// casts arrayList
 							ArrayList<String> casts = new ArrayList<String>();
-							String[] castsList = value[4].split(";");
+							String[] castsList = value[5].split(";");
 							for (String cast : castsList) 
 							{
 								casts.add(cast);
@@ -140,7 +140,7 @@ public class SearchAndListController {
 					}
 					if (c==0) //if no movie found
 					{
-						System.out.println("No existing movie");				
+						System.out.println("No existing movie");
 					}
 			}
 			catch(FileNotFoundException e)
