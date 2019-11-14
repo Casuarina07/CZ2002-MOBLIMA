@@ -1,5 +1,4 @@
-cineplexId,cineplexName,cinemaList
-001,Golden Vilage,Paya Lebar;Suntec City;VivoCity;Tampines;Jurong Point;Bishan
-002,Cathay Cineplexes,The Cathay;Cineleisure;Causeway Point;AMK Hub;JEM;
-003,Shaw Theatres,Jewel;Waterway Point;NEX;Seletar;Jcube;Lot One;Balestier
-004,Filmgrade Cineplexes,Century Square;Bugis+;Leisure Park Kallang
+cineplexName,cinemaList
+Golden Vilage,Paya Lebar;Suntec City;VivoCity;Tampines;Jurong Point;Bishan
+Cathay Cineplexes,The Cathay;Cineleisure;Causeway Point;AMK Hub;JEM;
+Shaw Theatres,Jewel;Waterway Point;NEX;Seletar;Jcube;Lot One;Balestier
