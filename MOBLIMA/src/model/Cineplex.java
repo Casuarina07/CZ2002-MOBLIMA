@@ -8,28 +8,19 @@ import java.util.ArrayList;
  * @since 2019-10-24
  */
 public class Cineplex {
-	private String cineplexID, cineplexName;
+	private String cineplexName;
 	private static ArrayList<Cineplex> cineplexList = new ArrayList<>();
 	private static ArrayList<Cinema> cinemaList = new ArrayList<>();
 	
-	public Cineplex(String cineplexID, String cineplexName, ArrayList<Cinema> cinemaList) {
+	public Cineplex(String cineplexName, String[] cinemaList) {
 		super();
-		this.cineplexID = cineplexID;
 		this.cineplexName = cineplexName;
-	}
-
-	public String getCineplexID() {
-		return cineplexID;
 	}
 
 	public String getCineplexName() {
 		return cineplexName;
 	}
 	
-	public void setCineplexID(String cineplexID) {
-		this.cineplexID = cineplexID;
-	}
-
 	public void setCineplexName(String cineplexName) {
 		this.cineplexName = cineplexName;
 	}

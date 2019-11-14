@@ -10,9 +10,15 @@ import model.Cinema;
 import model.Cineplex;
 import model.MovieListing;
 
+
+/**
+ * @author David Loh Shun Hao
+ * @author Gwyn Bong Xiao Min
+ * @since 2019-11-13
+ */
 public class DatabaseController {
 	private static DatabaseController controller = null;
-	private BufferedReader bufferedReader = null;
+	private static BufferedReader bufferedReader = null;
 
 	public static DatabaseController getInstance() {
 		if (controller == null) {
@@ -21,7 +27,7 @@ public class DatabaseController {
 		return controller;
 	}
 
-	private void initBufferReader(String fileName) {
+	private static void initBufferReader(String fileName) {
 		try {
 			bufferedReader = new BufferedReader(new FileReader("src/storage/" + fileName));
 		} catch (FileNotFoundException e) {
@@ -30,7 +36,7 @@ public class DatabaseController {
 
 	}
 
-	public ArrayList<Cineplex> readCineplex() {
+	public static ArrayList<Cineplex> readCineplex() {
 		initBufferReader("Cineplex.csv");
 
 		String line = "";
@@ -39,15 +45,33 @@ public class DatabaseController {
 		try {
 			while ((line = bufferedReader.readLine()) != null) {
 				String[] value = line.split(",");
-				int cineplexId = Integer.parseInt(value[0]);
-				String cineplexName = value[1];
-				String[] cinemas = value[2].split(";");
-				cineplexs.add(new Cineplex(cineplexId, cineplexName, cinemas));
+				String cineplexName = value[0];
+				String[] cinemas = value[1].split(";");
+				cineplexs.add(new Cineplex(cineplexName, cinemas));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return cineplexs;
+	}
+	
+	public static ArrayList<Cinema> readCinema() {
+		initBufferReader("Cinema.csv");
+
+		String line = "";
+		ArrayList<Cinema> cinema = new ArrayList<Cinema>();
+
+		try {
+			while ((line = bufferedReader.readLine()) != null) {
+				String[] value = line.split(",");
+				String cinemaCode = value[0];
+				String cinemaName = value[1];
+				cinema.add(new Cinema(cinemaCode, cinemaName));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return cinema;
 	}
 
 	public String[] readShowTime(String movieTitle, String cineplexName, String cinemaName) {
