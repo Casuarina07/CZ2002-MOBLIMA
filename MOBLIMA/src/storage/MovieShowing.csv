@@ -1,2 +1,4 @@
-movieTitle,cineplexName,cinemaName,movieShowtime
-Transformers,Golden Village,Suntec City,201911081530;201911081830;201912081530;201912081830  
+movieTitle,cineplexName,cinemaName,cinemaHallNo,movieShowtime,occupiedSeats
+Transformers,Golden Village,Suntec City,1,201911081530,13;55;33;19
+Transformers,Golden Village,Suntec City,2,201911081830,15;77;99;00
+Transformers,Golden Village,Suntec City,3,201912081530,66;87;10;43
