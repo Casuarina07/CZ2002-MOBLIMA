@@ -10,7 +10,6 @@ import model.Cinema;
 import model.Cineplex;
 import model.MovieListing;
 
-
 /**
  * @author David Loh Shun Hao
  * @author Gwyn Bong Xiao Min
@@ -54,41 +53,54 @@ public class DatabaseController {
 		}
 		return cineplexs;
 	}
-	
-	public static ArrayList<Cinema> readCinema() {
+
+	public static ArrayList<Cinema> readCinema(Cineplex cineplex) {
 		initBufferReader("Cinema.csv");
 
 		String line = "";
-		ArrayList<Cinema> cinema = new ArrayList<Cinema>();
+		ArrayList<Cinema> cinemaArry = new ArrayList<Cinema>();
 
 		try {
 			while ((line = bufferedReader.readLine()) != null) {
 				String[] value = line.split(",");
 				String cinemaCode = value[0];
 				String cinemaName = value[1];
-				cinema.add(new Cinema(cinemaCode, cinemaName));
+				String readCineplex = value[2];
+				if (readCineplex.equals(cineplex.getCineplexName())) {
+					cinemaArry.add(new Cinema(cinemaCode, cinemaName));
+
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return cinema;
+		return cinemaArry;
 	}
 
-	public String[] readShowTime(String movieTitle, String cineplexName, String cinemaName) {
+	public ArrayList<String>[] readShowTime(String movieTitle, String cineplexName, String cinemaName) {
 		initBufferReader("MovieShowing.csv");
 		String line = "";
-		String[] showTimes = null;
+		ArrayList<String>[] list = new ArrayList[2];
+		ArrayList<String> showTimes = new ArrayList<String>();
+		ArrayList<String> occupiedSeats = new ArrayList<String>();
 		try {
 			while ((line = bufferedReader.readLine()) != null) {
 				String[] value = line.split(",");
 				String readMovieTitle = value[0];
 				String readCineplexName = value[1];
 				String readCinemaName = value[2];
-				showTimes = value[3].split(";");
+
+				if (movieTitle.equals(readMovieTitle) && cineplexName.equals(readCineplexName)
+						&& cinemaName.equals(cinemaName)) {
+					showTimes.add(value[4]);
+					occupiedSeats.add(value[5]);
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return showTimes;
+		list[0] = showTimes;
+		list[1] = occupiedSeats;
+		return list;
 	}
 }

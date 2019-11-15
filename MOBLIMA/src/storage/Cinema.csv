@@ -1,20 +1,20 @@
-cinemaCode,cinemaName
-PLQ,Paya Lebar
-SCY,Suntec City
-VVC,VivoCity
-TMP,Tampines
-JPM,Jurong Point
-BIS,Bishan
-CTY,The Cathay
-CIN,Cineleisure
-CWP,Causeway Point
-AMK,AMK Hub
-JEM,JEM
-JEW,Jewel
-WWP,Waterway Point
-NEX,NEX
-SEL,Seletar
-JCB,Jcube
-LTO,Lot One
-BLT,Balestier
-CTS,Century Square
+cinemaCode,cinemaName,cineplex
+PLQ,Paya Lebar,Golden Village
+SCY,Suntec City,Golden Village
+VVC,VivoCity,Golden Village
+TMP,Tampines,Golden Village
+JPM,Jurong Point,Golden Village
+BIS,Bishan,Golden Village
+CTY,The Cathay,Cathay Cineplexes
+CIN,Cineleisure,Cathay Cineplexes
+CWP,Causeway Point,Cathay Cineplexes
+AMK,AMK Hub,Cathay Cineplexes
+JEM,JEM,Cathay Cineplexes
+JEW,Jewel,Shaw Theatres
+WWP,Waterway Point,Shaw Theatres
+NEX,NEX,Shaw Theatres
+SEL,Seletar,Shaw Theatres
+JCB,Jcube,Shaw Theatres
+LTO,Lot One,Shaw Theatres
+BLT,Balestier,Shaw Theatres
+CTS,Century Square,Shaw Theatres
