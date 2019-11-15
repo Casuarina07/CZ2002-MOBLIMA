@@ -12,6 +12,7 @@ public class MovieListing {
 
 	public enum MovieStatus {COMINGSOON, PREVIEW, NOWSHOWING, ENDSHOWING}
 	public enum MovieGenre {THRILLER, ROMANCE, COMEDY, CARTOON, ACTION}
+	public enum MovieType {DIGITAL, BLOCKBUSTER}
 	public enum MovieRating {G, PG, PG13, NC16, M18, R21} 
 	
 	private int movieID;
@@ -19,13 +20,16 @@ public class MovieListing {
 	private MovieStatus movieStatus; //refer to enum above
 	private String movieDirector;
 	private int movieDuration;
-	private ArrayList<String> movieCastList; // there may be more than one cast, thus an array is needed
+	//initialise movie cast list
+	private ArrayList<String> movieCastList = new ArrayList<String>(); // there may be more than one cast, thus an array is needed
 	private MovieGenre movieGenre; //refer to enum above
 	private MovieRating movieRating; //refer to enum above
 	private String movieSynopsis;
 	
 	private List<Rating> movieReview; // this is a list of all customer reviews for a particular movie
 	private double overallRating; // this refers to the overall viewer ratings for example, stars used (1 - 5[best])
+	
+	private ArrayList<ShowTime> showTimes; 
 	
 	public MovieListing(int movieID, String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
 			ArrayList<String> movieCastList, MovieGenre movieGenre, MovieRating movieRating, String movieSynopsis) {
@@ -35,7 +39,7 @@ public class MovieListing {
 		this.movieStatus = movieStatus;
 		this.movieDirector = movieDirector;
 		this.movieDuration = movieDuration;
-		this.movieCastList = movieCastList;
+		this.movieCastList = new ArrayList<>();
 		this.movieGenre = movieGenre;
 		this.movieRating = movieRating;
 		this.movieSynopsis = movieSynopsis;
@@ -58,6 +62,10 @@ public class MovieListing {
 		this.movieSynopsis = movieSynopsis;
 	}
 
+	public MovieListing() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getMovieID() {
 		return movieID;
 	}
@@ -76,6 +84,12 @@ public class MovieListing {
 		return movieStatus;
 	}
 	public void setMovieStatus(MovieStatus movieStatus) {
+		if(!movieStatus.equals(MovieStatus.NOWSHOWING)) {
+			for(ShowTime showtime : showTimes) {
+				
+			}
+			showTimes.clear();
+		}
 		this.movieStatus = movieStatus;
 	}
 	public String getMovieDirector() {
