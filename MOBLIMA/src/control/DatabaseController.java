@@ -53,26 +53,25 @@ public class DatabaseController {
 				{
 					String[] value = line.split(cvsSplitBy);
 
-					int movieID = Integer.parseInt(value[0]);
-					String movieTitle = value[1];
+					String movieTitle = value[0];
 					// movieStatus
-					MovieListing.MovieStatus movieStatus = MovieListing.MovieStatus.valueOf(value[2]);
-					String movieDirector = value[3];
-					int movieDuration = Integer.parseInt(value[4]);
+					MovieListing.MovieStatus movieStatus = MovieListing.MovieStatus.valueOf(value[1]);
+					String movieDirector = value[2];
+					int movieDuration = Integer.parseInt(value[3]);
 					// casts arrayList
 					ArrayList<String> casts = new ArrayList<String>();
-					String[] castsList = value[5].split(";");
+					String[] castsList = value[4].split(";");
 					for (String cast : castsList) 
 					{
 						casts.add(cast);
 					}
-					MovieListing.MovieGenre movieGenre = MovieListing.MovieGenre.valueOf(value[6]);
+					MovieListing.MovieGenre movieGenre = MovieListing.MovieGenre.valueOf(value[5]);
 
-					MovieListing.MovieRating movieRating = MovieListing.MovieRating.valueOf(value[7]);
+					MovieListing.MovieRating movieRating = MovieListing.MovieRating.valueOf(value[6]);
 
-					String movieSynopsis = value[8];
+					String movieSynopsis = value[7];
 
-					MovieListing movie = new MovieListing(movieID, movieTitle, movieStatus, movieDirector,
+					MovieListing movie = new MovieListing(movieTitle, movieStatus, movieDirector,
 							movieDuration, casts, movieGenre, movieRating, movieSynopsis);
 					movies.add(movie);
 				}
