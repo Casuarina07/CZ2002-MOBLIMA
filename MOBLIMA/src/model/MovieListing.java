@@ -31,15 +31,15 @@ public class MovieListing {
 	
 	private ArrayList<ShowTime> showTimes; 
 	
-	public MovieListing(int movieID, String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
+	public MovieListing(String movieTitle, MovieStatus movieStatus, String movieDirector, int movieDuration,
 			ArrayList<String> movieCastList, MovieGenre movieGenre, MovieRating movieRating, String movieSynopsis) {
 		super();
-		this.movieID = movieID;
 		this.movieTitle = movieTitle;
 		this.movieStatus = movieStatus;
 		this.movieDirector = movieDirector;
 		this.movieDuration = movieDuration;
 		this.movieCastList = new ArrayList<>();
+		this.movieCastList = movieCastList;
 		this.movieGenre = movieGenre;
 		this.movieRating = movieRating;
 		this.movieSynopsis = movieSynopsis;
@@ -160,7 +160,5 @@ public class MovieListing {
 	public static ArrayList<MovieListing> getMovieList() {
 		return movieList;
 	}	
-	
-	
 	
 }

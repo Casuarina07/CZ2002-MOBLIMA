@@ -40,7 +40,11 @@ public class BookingUI {
 		return bookingUI;
 	}
 
-	private void bookMovie(MovieListing movie) {
+	/**
+	 * Booking movie method to allow user to choose their options 
+	 * @param movie
+	 */
+	public void bookMovie(MovieListing movie) {
 		DatabaseController databaseController = DatabaseController.getInstance();
 		ArrayList<Cineplex> cineplexs = databaseController.readCineplex();
 
@@ -149,6 +153,7 @@ public class BookingUI {
 	private void printTicket(Ticket ticket) {
 		System.out.println("_____________Ticket_________________");
 		System.out.println("Movie: " + ticket.getMovie().getMovieTitle());
+		System.out.println("Price: " + ticket.getPrice());
 		System.out.println("Cineplex: " + ticket.getCineplex().getCineplexName());
 		System.out.println("Cinema: " + ticket.getCinema().getCinemaName());
 		System.out.println("Show time: " + getFormattedShowtime(ticket.getShowTime()));

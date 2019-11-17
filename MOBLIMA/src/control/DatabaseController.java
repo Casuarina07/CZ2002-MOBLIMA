@@ -16,6 +16,7 @@ import com.opencsv.exceptions.CsvException;
 import model.Cinema;
 import model.Cineplex;
 import model.MovieListing;
+import model.Rating;
 import model.Transaction;
 
 /**
@@ -267,5 +268,71 @@ public class DatabaseController {
 		}
 
 	}
+	
+	/**
+	 * Reading from Review.csv
+	 * @return ratedMovies 
+	 */
+	public static ArrayList<Rating> readReviewCSV() 
+	{
+		
+		initBufferReader("Review.csv");
+		String line = "";
+		ArrayList<Rating> ratedMovies = new ArrayList<Rating>();
+			try {
+					while ((line = bufferedReader.readLine()) != null) {
+						String[] value = line.split(",");
+						String movieTitle = value[0]; 
+						//int movieRating = Integer.parseInt(value[1]);
+						String movieRating = value[1];
+						String movieReview = value[2];
+							
+						Rating ratedMovie = new Rating(movieTitle, movieRating, movieReview);
+						ratedMovies.add(ratedMovie);
+					}
+				} catch (IOException e) {
+						e.printStackTrace();
+			}
+				return ratedMovies;
+	}
+	
+		/**
+		 * Reading from Transaction.csv
+		 * @return transactions
+		 */
+		public static ArrayList<Transaction> readTransactionCSV() 
+		{
+			
+			initBufferReader("Transaction.csv");
+			String line = "";
+			ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+			try {
+					while ((line = bufferedReader.readLine()) != null) {
+							String[] value = line.split(",");
+							String movieTransactionID = value[0];
+							String movieTitle = value[1]; 
+							String cineplexName = value[2]; 
+							String cinemaName = value[3]; 
+							//String movieShowtime = value[4];
+								String year = value[4].substring(0, 4);
+								String month = value[4].substring(4, 6);
+								String day = value[4].substring(6, 8);
+								String hour = value[4].substring(8, 10);
+								String min = value[4].substring(10, 12);
+								String movieShowtime = year + "-" + month + "-" + day + " " + hour + ":" + min;
+					
+							String seatID = value[5];
+							char row = (char) (Integer.parseInt(seatID.substring(0, 1)) + 65);
+
+							seatID =  "" + row + "" + seatID.substring(1);
+							double totalAmount = 0;			
+							Transaction transaction = new Transaction(movieTransactionID, movieTitle, cineplexName, cinemaName, movieShowtime, seatID, totalAmount);
+										transactions.add(transaction);
+									}
+								} catch (IOException e) {
+										e.printStackTrace();
+							}
+								return transactions;
+			}
 
 }

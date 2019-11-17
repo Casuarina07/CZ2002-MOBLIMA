@@ -57,7 +57,7 @@ public class ReviewTopSales {
 	public void listTop5Sales() throws IOException {
 		ArrayList<Transaction> salesOrder = new ArrayList<Transaction>();
 		salesOrder = databaseCon.readTransactionCSV();
-		System.out.println("---Top 5 Movies based on Sales");
+		System.out.println("---Top Movies based on Sales---");
 		ArrayList<String> top5sales = new ArrayList<>();
 		for(int i=0; i<salesOrder.size(); i++) {
 			if(top5sales.contains(salesOrder.get(i).getMovieTitle())) {
@@ -104,7 +104,7 @@ public class ReviewTopSales {
 	public void listTop5Rating() throws IOException {
 		ArrayList<Rating> ratingOrder = new ArrayList<Rating>();
 		ratingOrder = databaseCon.readReviewCSV();
-		System.out.println("-----Top 5 Movies based on Rating:-----");
+		System.out.println("---Top Movies based on Rating:---");
 		Collections.sort(ratingOrder, Rating.MovieRating);
 		int i = 1;
 		for(Rating str: ratingOrder){

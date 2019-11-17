@@ -1,5 +1,6 @@
 package view;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import control.StaffController;
@@ -13,7 +14,7 @@ import model.Staff;
  */
 public class MoblimaApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		StaffController staffCon = StaffController.getInstance();
 		
