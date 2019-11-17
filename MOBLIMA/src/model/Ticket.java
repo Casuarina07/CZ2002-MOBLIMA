@@ -1,74 +1,115 @@
 package model;
 
-import java.time.LocalDate;
-import java.util.Calendar;
+import control.PriceController;
 
+/**
+ * This class implements the Ticket entity which a ticket bought by the user
+ * with attributes movie, cineplex, cinema, showTime and cinemaHall
+ * 
+ * @author David Loh Shun Hao
+ * @since 2019-10-24
+ */
 public class Ticket {
-	private String movieName, movieType, cinemaType, seatID;
-	private double standardPrice, finalPrice;
-	private boolean isPublicHoliday, isWeekday;
 
-	public Ticket(String movieName, String movieType, String cinemaType, String seatID, double standardPrice) {
+	private MovieListing movie;
+	private Cineplex cineplex;
+	private Cinema cinema;
+	private String showTime;
+	private CinemaHall cinemaHall;
+	private String seatID;
+	private double price = 0d;
+	private int choice;
+
+	/**
+	 * @param movie      Movie selected by the user.
+	 * @param cineplex   Cineplex selected by the user.
+	 * @param cinema     Cinema sekected by the user.
+	 * @param showTime   Show time selected by the user.
+	 * @param cinemaHall CinemaHall assigned based ont the show time.
+	 * @param seatID
+	 * @param choice
+	 */
+	public Ticket(MovieListing movie, Cineplex cineplex, Cinema cinema, String showTime, CinemaHall cinemaHall,
+			String seatID, int choice) {
 		super();
-		this.movieName = movieName;
-		this.movieType = movieType;
-		this.cinemaType = cinemaType;
+		this.movie = movie;
+		this.cinema = cinema;
+		this.cineplex = cineplex;
+		this.showTime = showTime;
+		this.cinemaHall = cinemaHall;
 		this.seatID = seatID;
-		this.standardPrice = standardPrice;
-		this.isPublicHoliday = isPublicHoliday();
-		this.isWeekday = isWeekday();
+		this.choice = choice;
+		this.price = PriceController.calculateTicketPrice(10d, choice);
 	}
 
-	public String getMovieName() {
-		return movieName;
+	/**
+	 * Gets the movie the user booked.
+	 * 
+	 * @return A MovieListing object which represents the booked movie.
+	 * @see MovieListing
+	 */
+	public MovieListing getMovie() {
+		return movie;
 	}
 
-	public String getMovieType() {
-		return movieType;
+	/**
+	 * Gets the price of the ticket.
+	 * 
+	 * @return The price of the ticket of type double.
+	 */
+	public double getPrice() {
+		return price;
 	}
 
-	public String getCinemaType() {
-		return cinemaType;
+	/**
+	 * Gets the cineplex of the booked movie.
+	 * 
+	 * @return A Cineplex object chosen by the user.
+	 * @see Cineplex
+	 */
+	public Cineplex getCineplex() {
+		return cineplex;
 	}
 
+	/**
+	 * Gets the cinema of the booked movie.
+	 * 
+	 * @return A Cinema object choosen by the user.
+	 * @see Cinema
+	 */
+	public Cinema getCinema() {
+		return cinema;
+	}
+
+	/**
+	 * Gets the show time of the booked movie.
+	 * 
+	 * @return A string representing the show time if the movie.
+	 */
+	public String getShowTime() {
+		return showTime;
+	}
+
+	/**
+	 * Gets the cinema hall of the booked movie.
+	 * 
+	 * @return A CinemaHall object of the booked movie.
+	 * @see CinemaHall
+	 */
+	public CinemaHall getCinemaHall() {
+		return cinemaHall;
+	}
+
+	/**
+	 * Gets the seat ID of the chosen seat.
+	 * 
+	 * @return A string representing the seat ID.
+	 */
 	public String getSeatID() {
-		return seatID;
-	}
 
-	public double getStandardPrice() {
-		return standardPrice;
-	}
+		char row = (char) (Integer.parseInt(seatID.substring(0, 1)) + 65);
 
-	public double getFinalPrice() {
-		finalPrice = standardPrice;
-
-		// Additional $2 for tickets sold during the public holidays
-		if (isPublicHoliday)
-			return finalPrice += 2d;
-
-		// Additional $1 for tickets sold during the weekends
-		else if (!isWeekday)
-			return finalPrice += 1d;
-
-		// Standard price for all other days
-		else
-			return finalPrice;
-	}
-
-	public boolean isPublicHoliday() {
-		return isPublicHoliday;
-	}
-
-	public boolean isWeekday() {
-		// Retrieve system's date
-		LocalDate date = LocalDate.now();
-
-		// Returns false for weekend, true for weekday
-		if (date.getDayOfWeek().getValue() + 1 == Calendar.SATURDAY
-				|| date.getDayOfWeek().getValue() + 1 == Calendar.SUNDAY)
-			return false;
-		else
-			return true;
+		return "" + row + "" + seatID.substring(1);
 	}
 
 }

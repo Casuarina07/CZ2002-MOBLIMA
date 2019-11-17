@@ -1,53 +1,52 @@
 package model;
 
+/**
+ * This class implements the Ticket entity which a ticket bought by the user
+ * with attributes movie, cineplex, cinema, showTime and cinemaHall
+ * 
+ * @author David Loh Shun Hao
+ * @since 2019-10-24
+ */
 public class Seat {
-	private int seatId;
+	private String seatID;
 	private boolean isOccupied;
 
-	public Seat(int seatId, boolean isOccupied) {
+	/**
+	 * Creates a new Seat with its seat ID.
+	 * 
+	 * @param seatID A string representing the row and column of the seat.
+	 */
+	public Seat(String seatID) {
 		super();
-		this.seatId = seatId;
-		this.isOccupied = isOccupied;
+		this.seatID = seatID;
+		this.isOccupied = false;
 	}
 
-	public int getSeatId() {
-		return seatId;
+	/**
+	 * Gets the string representing the row and column of the seat.
+	 * 
+	 * @return A string representing the row and column of the seat.
+	 */
+	public String getSeatID() {
+		return seatID;
 	}
 
+	/**
+	 * Gets the vacancy status of the seat.
+	 * 
+	 * @return If the seat is occupied.
+	 */
 	public boolean isOccupied() {
 		return isOccupied;
 	}
 
+	/**
+	 * Set the vacancy status of the seat.
+	 * 
+	 * @param isOccupied If the seat is occupied.
+	 */
 	public void setOccupied(boolean isOccupied) {
 		this.isOccupied = isOccupied;
 	}
 
-	public void occupySeat() throws SeatOccupiedException {
-		if (isOccupied)
-			throw new SeatOccupiedException();
-		else
-			this.isOccupied = true;
-
-	}
-
-	public class SeatOccupiedException extends Exception {
-		private static final long serialVersionUID = 1L;
-
-		public SeatOccupiedException() {
-		}
-
-		@Override
-		public String getMessage() {
-			return "The seat is occupied!";
-		}
-	}
-
-	public class SeatFullException extends Exception {
-		private static final long serialVersionUID = 1L;
-
-		@Override
-		public String getMessage() {
-			return "The seats are full!";
-		}
-	}
 }
