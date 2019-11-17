@@ -268,71 +268,120 @@ public class DatabaseController {
 		}
 
 	}
-	
+
 	/**
 	 * Reading from Review.csv
-	 * @return ratedMovies 
+	 * 
+	 * @return ratedMovies
 	 */
-	public static ArrayList<Rating> readReviewCSV() 
-	{
-		
+	public static ArrayList<Rating> readReviewCSV() {
+
 		initBufferReader("Review.csv");
 		String line = "";
 		ArrayList<Rating> ratedMovies = new ArrayList<Rating>();
-			try {
-					while ((line = bufferedReader.readLine()) != null) {
-						String[] value = line.split(",");
-						String movieTitle = value[0]; 
-						//int movieRating = Integer.parseInt(value[1]);
-						String movieRating = value[1];
-						String movieReview = value[2];
-							
-						Rating ratedMovie = new Rating(movieTitle, movieRating, movieReview);
-						ratedMovies.add(ratedMovie);
-					}
-				} catch (IOException e) {
-						e.printStackTrace();
-			}
-				return ratedMovies;
-	}
-	
-		/**
-		 * Reading from Transaction.csv
-		 * @return transactions
-		 */
-		public static ArrayList<Transaction> readTransactionCSV() 
-		{
-			
-			initBufferReader("Transaction.csv");
-			String line = "";
-			ArrayList<Transaction> transactions = new ArrayList<Transaction>();
-			try {
-					while ((line = bufferedReader.readLine()) != null) {
-							String[] value = line.split(",");
-							String movieTransactionID = value[0];
-							String movieTitle = value[1]; 
-							String cineplexName = value[2]; 
-							String cinemaName = value[3]; 
-							//String movieShowtime = value[4];
-								String year = value[4].substring(0, 4);
-								String month = value[4].substring(4, 6);
-								String day = value[4].substring(6, 8);
-								String hour = value[4].substring(8, 10);
-								String min = value[4].substring(10, 12);
-								String movieShowtime = year + "-" + month + "-" + day + " " + hour + ":" + min;
-					
-							String seatID = value[5];
-							char row = (char) (Integer.parseInt(seatID.substring(0, 1)) + 65);
+		try {
+			while ((line = bufferedReader.readLine()) != null) {
+				String[] value = line.split(",");
+				String movieTitle = value[0];
+				// int movieRating = Integer.parseInt(value[1]);
+				String movieRating = value[1];
+				String movieReview = value[2];
 
-							seatID =  "" + row + "" + seatID.substring(1);
-							double totalAmount = 0;			
-							Transaction transaction = new Transaction(movieTransactionID, movieTitle, cineplexName, cinemaName, movieShowtime, seatID, totalAmount);
-										transactions.add(transaction);
-									}
-								} catch (IOException e) {
-										e.printStackTrace();
-							}
-								return transactions;
+				Rating ratedMovie = new Rating(movieTitle, movieRating, movieReview);
+				ratedMovies.add(ratedMovie);
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return ratedMovies;
+	}
+
+	/**
+	 * Reading from Transaction.csv
+	 * 
+	 * @return transactions
+	 */
+	public static ArrayList<Transaction> readTransactionCSV() {
+
+		initBufferReader("Transaction.csv");
+		String line = "";
+		ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+		try {
+			while ((line = bufferedReader.readLine()) != null) {
+				String[] value = line.split(",");
+				String movieTransactionID = value[0];
+				String movieTitle = value[1];
+				String cineplexName = value[2];
+				String cinemaName = value[3];
+				// String movieShowtime = value[4];
+				String year = value[4].substring(0, 4);
+				String month = value[4].substring(4, 6);
+				String day = value[4].substring(6, 8);
+				String hour = value[4].substring(8, 10);
+				String min = value[4].substring(10, 12);
+				String movieShowtime = year + "-" + month + "-" + day + " " + hour + ":" + min;
+
+				String seatID = value[5];
+				char row = (char) (Integer.parseInt(seatID.substring(0, 1)) + 65);
+
+				seatID = "" + row + "" + seatID.substring(1);
+				double totalAmount = 0;
+				Transaction transaction = new Transaction(movieTransactionID, movieTitle, cineplexName, cinemaName,
+						movieShowtime, seatID, totalAmount);
+				transactions.add(transaction);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return transactions;
+	}
+
+	public void updateMovie(MovieListing movieToUpdate, MovieListing updatedMovie) {
+		try {
+			File inputFile = new File("src/storage/MovieListing.csv");
+
+			// Read existing file
+			CSVReader reader = new CSVReader(new FileReader(inputFile));
+			List<String[]> csvBody = reader.readAll();
+			// get CSV row column and replace with by using row and column
+			for (int i = 0; i < csvBody.size(); i++) {
+				String[] strArray = csvBody.get(i);
+				if (strArray[0].equalsIgnoreCase(movieToUpdate.getMovieTitle())) {
+					csvBody.get(i)[0] = updatedMovie.getMovieTitle();
+					csvBody.get(i)[1] = updatedMovie.getMovieStatus().toString();
+					csvBody.get(i)[2] = updatedMovie.getMovieDirector();
+					csvBody.get(i)[3] = String.valueOf(updatedMovie.getMovieDuration());
+					String castString = "";
+
+					for (int j = 0; j < updatedMovie.getMovieCastList().size(); j++) {
+						if (j == updatedMovie.getMovieCastList().size() - 1) {
+							castString.concat(updatedMovie.getMovieCastList().get(j));
+						}
+						castString.concat(updatedMovie.getMovieCastList().get(j) + ";");
+					}
+					csvBody.get(i)[4] = castString;
+
+					csvBody.get(i)[5] = updatedMovie.getMovieGenre().toString();
+					csvBody.get(i)[6] = updatedMovie.getMovieRating().toString();
+					csvBody.get(i)[7] = updatedMovie.getMovieSynopsis();
+
+				}
+
+			}
+			reader.close();
+			// Write to CSV file which is open
+			CSVWriter writer = new CSVWriter(new FileWriter(inputFile), ',', CSVWriter.NO_QUOTE_CHARACTER,
+					CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
+
+			writer.writeAll(csvBody);
+			writer.flush();
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (CsvException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }

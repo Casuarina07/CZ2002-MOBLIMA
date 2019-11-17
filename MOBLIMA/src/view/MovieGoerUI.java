@@ -62,8 +62,6 @@ public class MovieGoerUI {
 		} while (choice > 0);
 	}
 
-
-
 	public class InvalidSeatException extends Exception {
 		private static final long serialVersionUID = 1L;
 
