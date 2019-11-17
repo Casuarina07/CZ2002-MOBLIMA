@@ -15,8 +15,10 @@ import model.Staff;
 public class MoblimaApp {
 
 	public static void main(String[] args) throws IOException {
-
-		StaffController staffCon = StaffController.getInstance();
+		mainMenu();
+	}
+	public static void mainMenu() throws IOException {
+StaffController staffCon = StaffController.getInstance();
 		
 		//load in staff info into staff.csv
 		boolean loadInStaffData = staffCon.loadStaffList();
@@ -73,5 +75,5 @@ public class MoblimaApp {
 				}
 			}
 		} while(choice > 2);
-	}	
+	}
 }

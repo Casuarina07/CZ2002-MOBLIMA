@@ -59,6 +59,7 @@ public class MovieGoerController {
 		case 5: 
 			ReviewUI reviewUI = ReviewUI.getInstance();
 			reviewUI.reviewMovie();
+			break;
 		case 0:
 			System.out.println("Thank you and hope see you again!");
 			break;

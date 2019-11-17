@@ -88,6 +88,7 @@ public class StaffUI {
 					break;
 				case 0:
 					System.out.println("You have successfully logged out!");
+					MoblimaApp.mainMenu();
 					return;
 				default:
 					System.out.println("Invalid choice, please try again");
