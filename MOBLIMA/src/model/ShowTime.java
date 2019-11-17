@@ -37,6 +37,21 @@ public class ShowTime extends Date{
 	}
 
 	/**
+	 * isDuplicateTime : Checks if two showtime same
+	 * @param showTime 
+	 * @return boolean value to check whether there is duplication of time
+	 */
+	public boolean isDuplicateTime(ShowTime showTime) {
+		if(this.year==showTime.year && 
+				this.month == showTime.month &&
+                this.day==showTime.day && 
+                this.hours == showTime.hours &&
+                this.minutes == showTime.minutes) {
+			return true;
+		}
+		return false;
+	}
+	/**
 	 * @return holidayList : a list of holidays
 	 */
 	public static ArrayList<String> getHolidayList(){
