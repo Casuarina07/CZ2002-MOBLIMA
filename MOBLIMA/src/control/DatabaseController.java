@@ -351,16 +351,13 @@ public class DatabaseController {
 					csvBody.get(i)[1] = updatedMovie.getMovieStatus().toString();
 					csvBody.get(i)[2] = updatedMovie.getMovieDirector();
 					csvBody.get(i)[3] = String.valueOf(updatedMovie.getMovieDuration());
-					String castString = "";
-
+					
+					StringBuilder movieCasts = new StringBuilder();
 					for (int j = 0; j < updatedMovie.getMovieCastList().size(); j++) {
-						if (j == updatedMovie.getMovieCastList().size() - 1) {
-							castString.concat(updatedMovie.getMovieCastList().get(j));
-						}
-						castString.concat(updatedMovie.getMovieCastList().get(j) + ";");
+						System.out.println(updatedMovie.getMovieCastList().get(j));
+						movieCasts.append(updatedMovie.getMovieCastList().get(j)+ ";");
 					}
-					csvBody.get(i)[4] = castString;
-
+					csvBody.get(i)[4] = movieCasts.toString();
 					csvBody.get(i)[5] = updatedMovie.getMovieGenre().toString();
 					csvBody.get(i)[6] = updatedMovie.getMovieRating().toString();
 					csvBody.get(i)[7] = updatedMovie.getMovieSynopsis();

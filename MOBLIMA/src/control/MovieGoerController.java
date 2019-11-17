@@ -60,6 +60,7 @@ public class MovieGoerController {
 			ReviewUI reviewUI = ReviewUI.getInstance();
 			reviewUI.reviewMovie();
 		case 0:
+			System.out.println("Thank you and hope see you again!");
 			break;
 		default:
 			System.out.println("Invalid choice, please try again");

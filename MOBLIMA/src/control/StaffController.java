@@ -234,14 +234,7 @@ public class StaffController {
 	public void saveMovieShowing(MovieShowing movieShowing) {
 		//add into MovieShowTimes csv
 		try {
-			writeToCSV("MovieShowing.csv");
-//			CSVWriter writer = new CSVWriter(new FileWriter("src/storage/MovieShowing.csv",true),
-//															CSVWriter.DEFAULT_SEPARATOR, 
-//															CSVWriter.NO_ESCAPE_CHARACTER,
-//															CSVWriter.NO_QUOTE_CHARACTER,
-//															CSVWriter.DEFAULT_LINE_END);
-//			FileWriter fileWriter = new FileWriter(new File("src/storage/MovieShowing.csv"), false);
-			
+		
 			ArrayList<ShowTime> showtimes = movieShowing.getShowTimes();
 			String sTimeStr = "";
 			

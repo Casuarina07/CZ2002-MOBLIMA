@@ -209,12 +209,12 @@ public class StaffUI {
 		System.out.println("____________ EDIT MOVIE DETAILS ____________\n");
 		System.out.println("____________ " + movieToUpdate.getMovieTitle() + " MOVIE ____________\n");
 		do {
-			System.out.println("Select which component to edit: \n" + "| 1. Movie Title	 		        |\n"
-					+ "| 2. Movie Synopsis	            |\n" + "| 3. Movie Director		        |\n"
-					+ "| 4. Movie Duration   	        |\n" + "| 5. Movie Cast List		        |\n"
-					+ "| 6. Movie Genre 		        |\n" + "| 7. Movie Rating		        |\n"
-					+ "| 8. Movie Status		        |\n" + "| 9. Movie Showing Details       |\n"
-					+ "| 0. Back to Staff Menu          |\n" + "__________________________________\n"
+			System.out.println("Select which component to edit: \n" + "| 1. Movie Title\n"
+					+ "| 2. Movie Synopsis\n" + "| 3. Movie Director\n"
+					+ "| 4. Movie Duration\n" + "| 5. Movie Cast List\n"
+					+ "| 6. Movie Genre\n" + "| 7. Movie Rating\n"
+					+ "| 8. Movie Status\n" + "| 9. Movie Showing Details\n"
+					+ "| 0. Back to Staff Menu\n" + "__________________________________\n"
 					+ " Enter your choice here: ");
 
 			choice = sc.nextInt();
@@ -241,6 +241,7 @@ public class StaffUI {
 				newMovieDetails.setMovieDuration(movieDuration);
 				break;
 			case 5:
+				movie = newMovieDetails;
 				loopCastNames("Enter new movie cast ");
 				break;
 			case 6:
@@ -410,8 +411,9 @@ public class StaffUI {
 	 * @return 
 	 */
 	public static ArrayList<String> loopCastNames(String msg) {
-		String castName=null;
+		String castName;
 		int i = 1; 
+		sc.nextLine();
 		do {
 			System.out.println(msg + i + " Name (Press Enter to stop adding cast name): ");
 			castName = sc.nextLine();

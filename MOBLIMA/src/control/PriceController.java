@@ -19,7 +19,9 @@ public class PriceController {
 	 * <li>{@link #CHILDREN}</li>
 	 * <li>{@link #SENIOR}</li>
 	 * <li>{@link #WEEKEND}</li>
-	 * 
+	 * <li>{@link #ADULT}</li>
+	 * <li>{@link #HOLIDAY}</li>
+	 * <li>{@link #STUDENT}</li>
 	 * 
 	 * @author David Loh Shun Hao
 	 *
@@ -40,7 +42,15 @@ public class PriceController {
 		/**
 		 * Rate for holiday ticket.
 		 */
-		HOLIDAY(1.5d);
+		HOLIDAY(1.5d),
+		/**
+		 * Rate for adult ticket
+		 */
+		ADULT(0.7d),
+		/**
+		 * Rate for student ticket
+		 */
+		STUDENT(0.6d);
 
 		private final double rate;
 
