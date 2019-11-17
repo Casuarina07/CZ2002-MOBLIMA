@@ -151,9 +151,10 @@ public class BookingUI {
 
 	// Prints the booked ticket details
 	private void printTicket(Ticket ticket) {
+		System.out.println("Transaction Successful! Thank you. ");
 		System.out.println("_____________Ticket_________________");
 		System.out.println("Movie: " + ticket.getMovie().getMovieTitle());
-		System.out.println("Price: " + ticket.getPrice());
+		System.out.println("Price: $" + ticket.getPrice());
 		System.out.println("Cineplex: " + ticket.getCineplex().getCineplexName());
 		System.out.println("Cinema: " + ticket.getCinema().getCinemaName());
 		System.out.println("Show time: " + getFormattedShowtime(ticket.getShowTime()));

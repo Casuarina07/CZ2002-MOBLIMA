@@ -1,4 +1,13 @@
 movieTitle,cineplexName,cinemaName,cinemaHallNo,movieShowtime,occupiedSeats
-The Addams Family,Golden Village,Suntec City,1,201911081530,13;55;33;19;01;71
-The Addams Family,Golden Village,Suntec City,2,201911081830,15;77;99;00
+The Addams Family,Golden Village,Suntec City,1,201911081530,13;55;33;19;01;71;37
+The Addams Family,Golden Village,Suntec City,2,201911081830,15;77;99;00;11;74
 The Addams Family,Golden Village,Suntec City,3,201912081530,66;87;10;43
+The Addams Family,Cathay Cineplexes,The Cathay,1,201911171730,13;55;33;19;01;71
+The Addams Family,Cathay Cineplexes,The Cathay,2,201911171910,13;55;33;19;01;71
+The Addams Family,Cathay Cineplexes,The Cathay,3,201911172110,13;55;33;19;01;71
+The Addams Family,Cathay Cineplexes,The Cathay,4,201911172220,13;55;33;19;01;71
+The Addams Family,Cathay Cineplexes,Cineleisure,1,201911171830,15;77;99;00;11
+The Addams Family,Cathay Cineplexes,Causeway Point,1,201911171920,66;87;10;43
+Terminator: Dark Fate,Golden Village,Suntec City,1,201912081430,00;
+Terminator: Dark Fate,Golden Village,Suntec City,2,201912081230,66;87;10;43
+Terminator: Dark Fate,Golden Village,Suntec City,3,201912081130,66;87;10;43

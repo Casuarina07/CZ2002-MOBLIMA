@@ -1,4 +1,4 @@
-//REVIEW CONTROLLER 
+//REVIEW TOP SALES CONTROLLER 
 package control;
 
 import java.io.BufferedReader;
@@ -25,6 +25,7 @@ import model.Transaction;
 import view.MovieGoerUI;
 
 /**
+ * Controller for reviews
  * @author Casuarina D/O Abdul Karim
  * @since 2019-11-13
  */
@@ -57,7 +58,7 @@ public class ReviewTopSales {
 	public void listTop5Sales() throws IOException {
 		ArrayList<Transaction> salesOrder = new ArrayList<Transaction>();
 		salesOrder = databaseCon.readTransactionCSV();
-		System.out.println("---Top Movies based on Sales---");
+		System.out.println("---Top 5 Movies based on Sales");
 		ArrayList<String> top5sales = new ArrayList<>();
 		for(int i=0; i<salesOrder.size(); i++) {
 			if(top5sales.contains(salesOrder.get(i).getMovieTitle())) {
@@ -94,6 +95,11 @@ public class ReviewTopSales {
 		}
 	}
 	//sorted by count for sales
+	/**
+	 * Sorting map based on the count 
+	 * @param wordCounts
+	 * @return
+	 */
 	public static Map<String, Integer> sortByValue(final Map<String, Integer> wordCounts) {
         return wordCounts.entrySet()
                 .stream()
@@ -101,10 +107,14 @@ public class ReviewTopSales {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
     }
 
+	/**
+	 * listing top 5 movies based on rating
+	 * @throws IOException
+	 */
 	public void listTop5Rating() throws IOException {
 		ArrayList<Rating> ratingOrder = new ArrayList<Rating>();
 		ratingOrder = databaseCon.readReviewCSV();
-		System.out.println("---Top Movies based on Rating:---");
+		System.out.println("-----Top 5 Movies based on Rating:-----");
 		Collections.sort(ratingOrder, Rating.MovieRating);
 		int i = 1;
 		for(Rating str: ratingOrder){
@@ -113,6 +123,10 @@ public class ReviewTopSales {
 		} 
 	}
 
+	/**
+	 * displaying movies that are bought and can be reviewed
+	 * @return
+	 */
 	public  ArrayList<String> displayReviewableMovies() {
 		// TODO Auto-generated method stub
 		ArrayList<Transaction> transaction = new ArrayList<Transaction>();
@@ -128,6 +142,13 @@ public class ReviewTopSales {
 		return transactions;
 	}
 	
+	/**
+	 * Review movie that was chosen from the list of reviewable movies and writing into the csv
+	 * @param choice
+	 * @param inputRate
+	 * @param inputComment
+	 * @throws IOException
+	 */
 	public void reviewChosenMovie(int choice, int inputRate, String inputComment) throws IOException {
 		//check whether the movie has already been reviewed
 		ArrayList<Rating> reviewed = new ArrayList<Rating>();
@@ -166,11 +187,20 @@ public class ReviewTopSales {
 		
 	}
 
+	/**
+	 * Method to check whether review has already been submitted
+	 * @return
+	 */
 	public int reviewCompleted() {
 	    int returnint = 1;
 		return returnint;
 	}
 
+	/**
+	 * Display the review that the user has submitted
+	 * @param choice
+	 * @return
+	 */
 	public   ArrayList<String> displayUserReview(int choice) {
 		ArrayList<Transaction> transaction = new ArrayList<Transaction>();
 		transaction = databaseCon.readTransactionCSV();
